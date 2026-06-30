@@ -1,0 +1,62 @@
+{
+  "schema": "launchcheck.qa/v2",
+  "productId": "launchcheck-auto-qa-watcher",
+  "productName": "LaunchCheck",
+  "version": "4.46.4",
+  "entry": "sample-good-app/index.html",
+  "requiredText": [
+    "LaunchCheck sample app ready",
+    "Export state",
+    "Import state"
+  ],
+  "requiredAssets": [
+    "README.md",
+    "LICENSE",
+    "package.json",
+    "bin/launchcheck.js",
+    "src/watcher.js",
+    "src/validator.js",
+    "src/qaContract.js",
+    "src/releaseGate.js",
+    "templates/launchcheck.qa.json",
+    "sample-good-app/index.html",
+    "sample-broken-app/index.html"
+  ],
+  "requiredWindowFunctions": [
+    "exportState",
+    "importState",
+    "getDefaultState",
+    "validateState",
+    "migrateState"
+  ],
+  "workflows": [
+    {
+      "name": "Open status panel and export state",
+      "steps": [
+        { "action": "click", "selector": "#openStatus" },
+        { "action": "click", "selector": "#exportBtn" },
+        { "action": "expectText", "selector": "#message", "text": "Export OK" }
+      ]
+    },
+    {
+      "name": "Import state and confirm message",
+      "steps": [
+        { "action": "click", "selector": "#importBtn" },
+        { "action": "expectText", "selector": "#message", "text": "Import OK" }
+      ]
+    }
+  ],
+  "stateRequired": true,
+  "releaseGate": {
+    "required": true,
+    "expectedBucket": "PASS",
+    "expectedReceipt": true
+  },
+  "successCriteria": [
+    "The package contains the validator, watcher, and public CLI.",
+    "The sample app supports state export and import.",
+    "The watcher does not execute arbitrary native or shell products.",
+    "Each validation writes a JSON report, HTML report, fix prompt, and AI iteration packet.",
+    "Product continuity and file-change evidence are retained between builds."
+  ]
+}

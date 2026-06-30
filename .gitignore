@@ -1,0 +1,11 @@
+node_modules/
+_VALIDATION_REPORTS/
+_VALIDATION_STATE/
+_VALIDATION_WORK/
+_VALIDATED_BUILDS/
+playwright-report/
+test-results/
+*.log
+*.zip
+demo/recordings/page@*.webm
+.DS_Store

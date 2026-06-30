@@ -1,0 +1,37 @@
+name: Bug report
+description: Report reproducible incorrect behavior.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: "Do not include passwords, API keys, private customer data, or other secrets."
+  - type: textarea
+    id: behavior
+    attributes:
+      label: What happened?
+      description: Describe the observed behavior and what you expected instead.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Reproduction steps
+      description: Provide the smallest reliable sequence that reproduces the problem.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version or commit
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Operating system and runtime
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Logs or evidence
+      description: Remove sensitive values before posting.

@@ -1,0 +1,9 @@
+{
+  "schema": "launchcheck.product/v1",
+  "productId": "launchcheck-auto-qa-watcher",
+  "productName": "LaunchCheck",
+  "version": "4.46.4",
+  "safeLauncher": "src/supervisor.js",
+  "workerLauncher": "src/watcher.js",
+  "cli": "bin/launchcheck.js"
+}

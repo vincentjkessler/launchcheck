@@ -1,0 +1,53 @@
+{
+  "schema": "launchcheck.qa/v2",
+  "productId": "launchcheck-auto-qa-watcher",
+  "productName": "LaunchCheck Auto QA Watcher",
+  "version": "4.46.4",
+  "entry": "sample-good-app/index.html",
+  "requiredText": [
+    "LaunchCheck sample app ready",
+    "Export state",
+    "Import state"
+  ],
+  "requiredAssets": [
+    "src/watcher.js",
+    "src/validator.js",
+    "src/qaContract.js",
+    "README.md",
+    "templates/launchcheck.qa.json",
+    "templates/html-embedded-contract.html",
+    "templates/python-embedded-contract.py",
+    "sample-broken-app/index.html",
+    "sample-good-app/index.html",
+    "src/productState.js",
+    "templates/product.manifest.json",
+    "templates/product-aware-launchcheck.qa.json",
+    "src/progress.js",
+    "src/handoffRescue.js",
+    "src/releaseGate.js",
+    "RUN_LAUNCHCHECK_V4_27.ps1.txt",
+    "src/handoffProbe.js"
+  ],
+  "requiredWindowFunctions": [
+    "exportState",
+    "importState",
+    "getDefaultState",
+    "validateState",
+    "migrateState"
+  ],
+  "stateRequired": true,
+  "successCriteria": [
+    "Self-handoff survival is verified after readiness before the old watcher exits.",
+    "The old watcher only exits after the new watcher PID is alive, the active lock points to the new PID/version, and the heartbeat advances.",
+    "A duplicate watcher readiness file is not accepted as durable handoff confirmation.",
+    "Direct handoff uses the validated ZIP folder name under D:\\Work, matching the last known-good v4.13 folder behavior.",
+    "Direct handoff starts background npm and Playwright installation after watcher readiness, matching the last known-good v4.13 startup separation.",
+    "If handoff survival fails, the old watcher remains alive and continues watching Downloads.",
+    "Startup self-handoff probe is disabled by default and must not block watcher startup.",
+    "Executable self-handoff lifecycle probe runs during LaunchCheck candidate validation, not as a blocking startup task.",
+    "The watcher uses a polling scanner plus fs.watch assist so Windows file event misses do not strand post-handoff validation.",
+    "Polling seeds existing Downloads files on startup so backlog remains ignored unless --scan-existing is supplied.",
+    "The self-handoff probe has a bounded timeout and reports phase details instead of hanging indefinitely.",
+    "The promoted watcher must validate a post-handoff smoke ZIP before the self-handoff lifecycle probe passes."
+  ]
+}

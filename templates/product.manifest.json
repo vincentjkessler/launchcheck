@@ -1,0 +1,6 @@
+{
+  "schema": "launchcheck.product/v1",
+  "productId": "your-product-id",
+  "productName": "Your Product",
+  "version": "4.46.4"
+}

@@ -1,0 +1,36 @@
+{
+  "name": "launchcheck",
+  "version": "4.46.4",
+  "description": "Local QA watcher and evidence generator for ZIP and HTML software builds.",
+  "main": "src/watcher.js",
+  "type": "commonjs",
+  "bin": {
+    "launchcheck": "bin/launchcheck.js"
+  },
+  "scripts": {
+    "start": "node bin/launchcheck.js watch",
+    "watch": "node bin/launchcheck.js watch",
+    "status": "node bin/launchcheck.js status",
+    "validate": "node bin/launchcheck.js validate",
+    "record:demo": "node demo/record-demo.js",
+    "test": "node test/smoke.js && node test/security.js",
+    "test:syntax": "node test/syntax.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "playwright": "^1.49.1"
+  },
+  "keywords": [
+    "qa",
+    "validator",
+    "watcher",
+    "playwright",
+    "ai-generated-code",
+    "release-gate",
+    "developer-tools"
+  ],
+  "author": "Vincent J. Kessler",
+  "license": "MIT"
+}
